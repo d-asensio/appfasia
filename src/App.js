@@ -38,7 +38,7 @@ const WordOptions = styled.div`
 function App () {
   const { speak } = useSpeechSynthesis()
   const [text, setText] = useState(initialState.text)
-  const [words] = useState(initialState.words)
+  const [categories] = useState(initialState.categories)
   const [speakEnabled, setSpeakEnabled] = useState(true)
   const [, copyToClipboard] = useCopyToClipboard()
 
@@ -103,16 +103,25 @@ function App () {
           onChange={handleTextareaChange}
         />
         <WordOptions>
-          {words.map(word => (
-            <Button
-              size="lg"
-              color="primary"
-              variant="solid"
-              key={word}
-              onClick={handleWordClick}
-            >
-              {word}
-            </Button>
+          {categories.map(({ name, words, color}) => (
+            <div>
+              <h4>{name}</h4>
+              {words.map(word => (
+                <Button
+                  sx={{
+                    background: color,
+                    margin: '0.25rem'
+                  }}
+                  size="lg"
+                  color="primary"
+                  variant="solid"
+                  key={word}
+                  onClick={handleWordClick}
+                >
+                  {word}
+                </Button>
+              ))}
+            </div>
           ))}
         </WordOptions>
       </div>
