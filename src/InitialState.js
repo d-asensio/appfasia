@@ -7,6 +7,13 @@ export const initialState = {
       words: [
         "Sílvia",
         "Mario",
+        "Isa",
+        "Mike",
+        "Ricardo",
+        "Jorge Abascal",
+        "José",
+        "Inma",
+        "Julio",
         "Laura",
         "Ara",
         "Carolina",
