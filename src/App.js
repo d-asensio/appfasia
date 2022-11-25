@@ -21,9 +21,15 @@ function App() {
     setText(`${text} ${clickedWord}`)
   }, [text])
 
+  const handleTextareaChange= useCallback(e => {
+    const writtenText = e.target.value
+
+    setText(writtenText)
+  }, [text])
+
   return (
     <div className="App">
-      <textarea className='input-area' value={text} />
+      <textarea className='input-area' value={text} onChange={handleTextareaChange}/>
       <div className='word-options'>
         {words.map(word => (
           <button key={word} onClick={handleWordClick}>{word}</button>
