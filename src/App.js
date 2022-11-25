@@ -37,10 +37,12 @@ function App() {
   const handleWordClick = useCallback(e => {
     const clickedWord = e.target.innerText
 
-    speak({ text: clickedWord })
+    if (speakEnabled) {
+      speak({ text: clickedWord })
+    }
 
     setText(`${text} ${clickedWord}`)
-  }, [text, speak])
+  }, [text, speak, speakEnabled])
 
   const handleTextareaChange= useCallback(e => {
     const writtenText = e.target.value
