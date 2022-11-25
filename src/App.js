@@ -4,7 +4,7 @@ import './App.css'
 import 'normalize.css'
 import { useCallback, useState } from 'react'
 import { useSpeechSynthesis } from 'react-speech-kit'
-import { CssBaseline, IconButton } from '@mui/joy'
+import { CssBaseline, IconButton, Textarea as JoyTextarea } from '@mui/joy'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import VolumeUpIcon from '@mui/icons-material/VolumeUp'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
@@ -12,6 +12,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import styled from '@emotion/styled'
 import { useCopyToClipboard } from 'react-use'
 import { initialState } from './InitialState'
+import { Box } from '@mui/system'
 
 const Actions = styled.div`
   position: absolute;
@@ -19,9 +20,11 @@ const Actions = styled.div`
   top: 1rem;
   display: flex;
   gap: 0.5rem;
+  z-index: 1;
 `
 
-const Textarea = styled.textarea`
+const Textarea = styled(JoyTextarea)`
+  margin: 1rem;
   resize: none;
   min-height: 300px;
 `
@@ -70,7 +73,7 @@ function App () {
     <CssVarsProvider>
       <CssBaseline/>
       <div className="App">
-        <Actions>
+        {/* <Actions>
           <IconButton
             size="lg"
             variant="outlined"
@@ -97,10 +100,41 @@ function App () {
           >
             <ContentCopyIcon/>
           </IconButton>
-        </Actions>
+        </Actions> */}
         <Textarea
+          size="lg"
           value={text}
           onChange={handleTextareaChange}
+          startDecorator={       
+             <Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'right', width: '100%'}}>
+              <IconButton
+                size="lg"
+                variant="outlined"
+                color="neutral"
+                onClick={handlePlayClick}
+              >
+                <PlayCircleIcon/>
+              </IconButton>
+              <IconButton
+                size="lg"
+                variant="outlined"
+                color="neutral"
+                onClick={() => setSpeakEnabled(!speakEnabled)}
+              >
+                {speakEnabled
+                  ? <VolumeUpIcon/>
+                  : <VolumeOffIcon/>}
+              </IconButton>
+              <IconButton
+                size="lg"
+                variant="outlined"
+                color="neutral"
+                onClick={handleCopyClick}
+              >
+                <ContentCopyIcon/>
+              </IconButton>
+            </Box>
+        }
         />
         <WordOptions>
           {categories.map(({ name, words, color}) => (
