@@ -9,6 +9,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import styled from '@emotion/styled';
+import { useCopyToClipboard } from 'react-use'
 
 const initialState = {
   text: '',
@@ -33,6 +34,7 @@ function App() {
   const [text, setText] = useState(initialState.text)
   const [words] = useState(initialState.words)
   const [speakEnabled, setSpeakEnabled] = useState(true);
+  const [, copyToClipboard] = useCopyToClipboard();
 
   const handleWordClick = useCallback(e => {
     const clickedWord = e.target.innerText
@@ -44,11 +46,15 @@ function App() {
     setText(`${text} ${clickedWord}`)
   }, [text, speak, speakEnabled])
 
-  const handleTextareaChange= useCallback(e => {
+  const handleTextareaChange = useCallback(e => {
     const writtenText = e.target.value
 
     setText(writtenText)
   }, [])
+
+  const handleCopyCLick = useCallback(e => {
+    copyToClipboard(text)
+  }, [text, copyToClipboard])
 
   return (
     <CssVarsProvider>
@@ -69,7 +75,7 @@ function App() {
             size="lg"
             variant='outlined'
             color='neutral'
-            onClick={() => setSpeakEnabled(!speakEnabled)}
+            onClick={handleCopyCLick}
           >
             <ContentCopyIcon />
           </IconButton>
