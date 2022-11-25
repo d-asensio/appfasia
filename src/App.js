@@ -8,6 +8,7 @@ import { CssBaseline, IconButton } from '@mui/joy'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import VolumeUpIcon from '@mui/icons-material/VolumeUp'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import styled from '@emotion/styled'
 import { useCopyToClipboard } from 'react-use'
 import { initialState } from './InitialState'
@@ -53,15 +54,27 @@ function App () {
     setText(writtenText)
   }, [])
 
-  const handleCopyCLick = useCallback(e => {
+  const handleCopyClick = useCallback(e => {
     copyToClipboard(text)
   }, [text, copyToClipboard])
+
+  const handlePlayClick = useCallback(e => {
+    speak({ text })
+  }, [text])
 
   return (
     <CssVarsProvider>
       <CssBaseline/>
       <div className="App">
         <Actions>
+          <IconButton
+            size="lg"
+            variant="outlined"
+            color="neutral"
+            onClick={handlePlayClick}
+          >
+            <PlayCircleIcon/>
+          </IconButton>
           <IconButton
             size="lg"
             variant="outlined"
@@ -76,7 +89,7 @@ function App () {
             size="lg"
             variant="outlined"
             color="neutral"
-            onClick={handleCopyCLick}
+            onClick={handleCopyClick}
           >
             <ContentCopyIcon/>
           </IconButton>
