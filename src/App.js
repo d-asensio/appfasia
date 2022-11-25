@@ -4,12 +4,12 @@ import './App.css'
 import 'normalize.css'
 import { useCallback, useState } from 'react'
 import { useSpeechSynthesis } from 'react-speech-kit'
-import { CssBaseline, IconButton, Textarea as JoyTextarea } from '@mui/joy'
+import { CssBaseline, IconButton, Textarea as JoyTextarea, Tooltip } from '@mui/joy'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import VolumeUpIcon from '@mui/icons-material/VolumeUp'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import DeleteIcon from '@mui/icons-material/Delete';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle'
+import DeleteIcon from '@mui/icons-material/Delete'
 import styled from '@emotion/styled'
 import { useCopyToClipboard } from 'react-use'
 import { initialState } from './InitialState'
@@ -24,7 +24,7 @@ const Textarea = styled(JoyTextarea)`
 const WordOptions = styled.div`
   margin: 0.5rem;
   text-align: start;
-  
+
   > * {
     margin: 0.25rem;
   }
@@ -69,47 +69,71 @@ function App () {
           size="lg"
           value={text}
           onChange={handleTextareaChange}
-          startDecorator={       
-             <Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'right', width: '100%'}}>
-              <IconButton
-                size="lg"
-                variant="outlined"
-                color="neutral"
-                onClick={handlePlayClick}
+          startDecorator={
+            <Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'right', width: '100%' }}>
+              <Tooltip
+                placement="bottom"
+                arrow
+                title="Reproducir"
               >
-                <PlayCircleIcon/>
-              </IconButton>
-              <IconButton
-                size="lg"
-                variant="outlined"
-                color="neutral"
-                onClick={() => setSpeakEnabled(!speakEnabled)}
-              >
-                {speakEnabled
-                  ? <VolumeUpIcon/>
-                  : <VolumeOffIcon/>}
-              </IconButton>
-              <IconButton
-                size="lg"
-                variant="outlined"
-                color="neutral"
-                onClick={handleCopyClick}
-              >
-                <ContentCopyIcon/>
-              </IconButton>
-              <IconButton              
-                size="lg"
-                variant="outlined"
-                color="neutral" 
-                onClick={() => setText('')}
+                <IconButton
+                  size="lg"
+                  variant="outlined"
+                  color="neutral"
+                  onClick={handlePlayClick}
                 >
-                <DeleteIcon />
-              </IconButton>
+                  <PlayCircleIcon/>
+                </IconButton>
+              </Tooltip>
+              <Tooltip
+                placement="bottom"
+                arrow
+                title={speakEnabled ? 'Desactivar audio' : 'Activar audio'}
+              >
+                <IconButton
+                  size="lg"
+                  variant="outlined"
+                  color="neutral"
+                  onClick={() => setSpeakEnabled(!speakEnabled)}
+                >
+                  {speakEnabled
+                    ? <VolumeUpIcon/>
+                    : <VolumeOffIcon/>}
+                </IconButton>
+              </Tooltip>
+              <Tooltip
+                placement="bottom"
+                arrow
+                title="Copiar texto"
+              >
+                <IconButton
+                  size="lg"
+                  variant="outlined"
+                  color="neutral"
+                  onClick={handleCopyClick}
+                >
+                  <ContentCopyIcon/>
+                </IconButton>
+              </Tooltip>
+              <Tooltip
+                placement="bottom"
+                arrow
+                title="Eliminar texto"
+              >
+                <IconButton
+                  size="lg"
+                  variant="outlined"
+                  color="neutral"
+                  onClick={() => setText('')}
+                >
+                  <DeleteIcon/>
+                </IconButton>
+              </Tooltip>
             </Box>
-        }
+          }
         />
         <WordOptions>
-          {categories.map(({ name, words, color}) => (
+          {categories.map(({ name, words, color }) => (
             <div>
               <h4>{name}</h4>
               {words.sort().map(word => (
