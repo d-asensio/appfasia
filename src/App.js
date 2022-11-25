@@ -14,15 +14,6 @@ import { useCopyToClipboard } from 'react-use'
 import { initialState } from './InitialState'
 import { Box } from '@mui/system'
 
-const Actions = styled.div`
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  z-index: 1;
-`
-
 const Textarea = styled(JoyTextarea)`
   margin: 1rem;
   resize: none;
@@ -73,34 +64,6 @@ function App () {
     <CssVarsProvider>
       <CssBaseline/>
       <div className="App">
-        {/* <Actions>
-          <IconButton
-            size="lg"
-            variant="outlined"
-            color="neutral"
-            onClick={handlePlayClick}
-          >
-            <PlayCircleIcon/>
-          </IconButton>
-          <IconButton
-            size="lg"
-            variant="outlined"
-            color="neutral"
-            onClick={() => setSpeakEnabled(!speakEnabled)}
-          >
-            {speakEnabled
-              ? <VolumeUpIcon/>
-              : <VolumeOffIcon/>}
-          </IconButton>
-          <IconButton
-            size="lg"
-            variant="outlined"
-            color="neutral"
-            onClick={handleCopyClick}
-          >
-            <ContentCopyIcon/>
-          </IconButton>
-        </Actions> */}
         <Textarea
           size="lg"
           value={text}
