@@ -3496,6 +3496,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-scripts: 5.0.1
+    react-speech-kit: ^3.0.1
     web-vitals: ^2.1.0
   languageName: unknown
   linkType: soft
@@ -10555,6 +10556,16 @@ __metadata:
   bin:
     react-scripts: bin/react-scripts.js
   checksum: 92afa2f245c7092ccc97d5609dc7a2130616262e34da7f15072d9442e2d2e1d4909a91022abd1faac1336eb17c5525a10d9bd43e1ae374c7ec941ca20addca68
+  languageName: node
+  linkType: hard
+
+"react-speech-kit@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "react-speech-kit@npm:3.0.1"
+  peerDependencies:
+    prop-types: ^15.7.2
+    react: ^16.8.0
+  checksum: 0c82d3ba41482474e11c8cc77d87742acb28d3bfec500f5771b0a5553ddee9d40b22b4eba9369163b822cd1a693081a766047b6514f9d9ab66a003a9e97b530c
   languageName: node
   linkType: hard
 

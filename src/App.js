@@ -1,6 +1,7 @@
 import './App.css';
 import 'normalize.css';
 import { useCallback, useState } from 'react'
+import { useSpeechSynthesis } from 'react-speech-kit'
 
 const initialState = {
   text: '',
@@ -12,14 +13,17 @@ const initialState = {
 }
 
 function App() {
+  const { speak } = useSpeechSynthesis();
   const [text, setText] = useState(initialState.text)
   const [words] = useState(initialState.words)
 
   const handleWordClick = useCallback(e => {
     const clickedWord = e.target.innerText
 
+    speak({ text: clickedWord })
+
     setText(`${text} ${clickedWord}`)
-  }, [text])
+  }, [text, speak])
 
   const handleTextareaChange= useCallback(e => {
     const writtenText = e.target.value
