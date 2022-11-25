@@ -106,7 +106,7 @@ function App () {
           {categories.map(({ name, words, color}) => (
             <div>
               <h4>{name}</h4>
-              {words.map(word => (
+              {words.sort().map(word => (
                 <Button
                   sx={{
                     background: color,
