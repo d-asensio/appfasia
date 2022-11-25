@@ -64,7 +64,7 @@ function App () {
 
   const handlePlayClick = useCallback(e => {
     speak({ text })
-  }, [text])
+  }, [text, speak])
 
   return (
     <CssVarsProvider>
