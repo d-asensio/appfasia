@@ -21,13 +21,17 @@ const Actions = styled.div`
   gap: 0.5rem;
 `
 
+const Textarea = styled.textarea`
+  resize: none;
+  min-height: 300px;
+`
+
 const WordOptions = styled.div`
-  margin: 1rem;
+  margin: 0.5rem;
   text-align: start;
   
   > * {
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: 0.25rem;
   }
 `
 
@@ -94,7 +98,10 @@ function App () {
             <ContentCopyIcon/>
           </IconButton>
         </Actions>
-        <textarea className="input-area" value={text} onChange={handleTextareaChange}/>
+        <Textarea
+          value={text}
+          onChange={handleTextareaChange}
+        />
         <WordOptions>
           {words.map(word => (
             <Button
