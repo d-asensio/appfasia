@@ -9,6 +9,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import VolumeUpIcon from '@mui/icons-material/VolumeUp'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import DeleteIcon from '@mui/icons-material/Delete';
 import styled from '@emotion/styled'
 import { useCopyToClipboard } from 'react-use'
 import { initialState } from './InitialState'
@@ -95,6 +96,14 @@ function App () {
                 onClick={handleCopyClick}
               >
                 <ContentCopyIcon/>
+              </IconButton>
+              <IconButton              
+                size="lg"
+                variant="outlined"
+                color="neutral" 
+                onClick={() => setText('')}
+                >
+                <DeleteIcon />
               </IconButton>
             </Box>
         }
