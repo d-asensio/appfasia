@@ -21,6 +21,12 @@ const Textarea = styled(JoyTextarea)`
   min-height: 300px;
 `
 
+const featureFlags = (function IIFE () {
+  const isEnabled = toggleName => process.env[`REACT_APP_FF_${toggleName}`] === 'true'
+
+  return {isEnabled}
+})()
+
 const WordOptions = styled.div`
   margin: 0.5rem;
   text-align: start;
