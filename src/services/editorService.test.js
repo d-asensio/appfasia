@@ -32,3 +32,18 @@ describe('addTextToEditor', () => {
     ])
   })
 })
+
+describe('clearEditorContent', () => {
+  it('should use store.mutate with the setEditorContentMutation setting the content to ""', () => {
+    expect(
+      editorService.clearEditorContent('an-editor-id')
+    ).toGenerateEffects([
+      {
+        effect: store.mutate(setEditorContentMutation, {
+          id: 'an-editor-id',
+          content: ''
+        })
+      }
+    ])
+  })
+})

@@ -10,5 +10,13 @@ export const editorService = (function IIFE () {
     yield store.mutate(addTextToEditorMutation, { id, text })
   }
 
-  return { setEditorContent, addTextToEditor }
+  function * clearEditorContent (id) {
+    yield store.mutate(setEditorContentMutation, { id, content: '' })
+  }
+
+  return {
+    setEditorContent,
+    addTextToEditor,
+    clearEditorContent
+  }
 })()
