@@ -26,7 +26,7 @@ describe('wordCategoryIdListSelector', () => {
   })
 })
 
-describe('wordCategoryById', () => {
+describe('wordCategoryByIdSelector', () => {
   it('should return the data of a category given its id', () => {
     const categoryData = {
       name: 'A Category',
@@ -53,7 +53,7 @@ describe('wordCategoryById', () => {
   })
 })
 
-describe('wordListByCategoryId', () => {
+describe('wordListByCategoryIdSelector', () => {
   it('should return the words of a category given its id', () => {
     const categoryWords = [
       'a word',
