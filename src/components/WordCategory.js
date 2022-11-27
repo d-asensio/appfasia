@@ -1,6 +1,11 @@
 import { useSelector } from '../store'
 import * as wordEntity from '../entities/word'
 import Button from '@mui/joy/Button'
+import { sort } from 'ramda'
+
+const sortAlphabetically = sort(
+  (a, b) => a.localeCompare(b)
+)
 
 export function WordCategory ({ id, onWordClick }) {
   const { name, color } = useSelector(
@@ -14,7 +19,7 @@ export function WordCategory ({ id, onWordClick }) {
   return (
     <div>
       <h4>{name}</h4>
-      {words.sort().map(word => (
+      {sortAlphabetically(words).map(word => (
         <Button
           sx={{
             background: color,
