@@ -11,6 +11,7 @@
     "@regenerate/core": "1.0.2",
     "@regenerate/effect-env": "1.0.2",
     "@regenerate/effect-zustand-store": "1.0.2",
+    "@regenerate/jest-matchers": "^1.0.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",

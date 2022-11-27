@@ -2593,6 +2593,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@regenerate/jest-matchers@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@regenerate/jest-matchers@npm:1.0.2"
+  dependencies:
+    "@regenerate/test-helpers": 1.0.2
+    jest-matcher-utils: ^27.5.0
+    lodash.isequal: ^4.5.0
+  checksum: 7374f4bd080011dd97a3b2f19e7e285c601586ad43e63aee1fae9534da3a5f09be64b4f111abc3b4ebd793f4957a1d867dd1ca06f39c13bddea3f44bde26b4a9
+  languageName: node
+  linkType: hard
+
+"@regenerate/test-helpers@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@regenerate/test-helpers@npm:1.0.2"
+  dependencies:
+    lodash.isequal: ^4.5.0
+  peerDependencies:
+    "@regenerate/core": 1.0.2
+  checksum: e7995abca4821b38047ec5a626b88adc05f31bfe5c1e709eb903e104aa2a049b4444957ee0ed3e005d9fda0bd82d074001e5c8f4996e6375595a22e60dee5ee3
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-babel@npm:^5.2.0":
   version: 5.3.1
   resolution: "@rollup/plugin-babel@npm:5.3.1"
@@ -3920,6 +3942,7 @@ __metadata:
     "@regenerate/core": 1.0.2
     "@regenerate/effect-env": 1.0.2
     "@regenerate/effect-zustand-store": 1.0.2
+    "@regenerate/jest-matchers": ^1.0.2
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^13.2.1
@@ -8160,7 +8183,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-matcher-utils@npm:^27.5.1":
+"jest-matcher-utils@npm:^27.5.0, jest-matcher-utils@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-matcher-utils@npm:27.5.1"
   dependencies:
@@ -8876,6 +8899,13 @@ __metadata:
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
   checksum: a3f527d22c548f43ae31c861ada88b2637eb48ac6aa3eb56e82d44917971b8aa96fbb37aa60efea674dc4ee8c42074f90f7b1f772e9db375435f6c83a19b3bc6
+  languageName: node
+  linkType: hard
+
+"lodash.isequal@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "lodash.isequal@npm:4.5.0"
+  checksum: da27515dc5230eb1140ba65ff8de3613649620e8656b19a6270afe4866b7bd461d9ba2ac8a48dcc57f7adac4ee80e1de9f965d89d4d81a0ad52bb3eec2609644
   languageName: node
   linkType: hard
 
