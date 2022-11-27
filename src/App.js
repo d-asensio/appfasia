@@ -27,9 +27,11 @@ import { run } from '@regenerate/core'
 
 import * as wordEntity from './entities/word'
 import * as editorEntity from './entities/editor'
+import * as globalOptionsEntity from './entities/globalOptions'
 import { useSelector } from './store'
 import { WordCategory } from './components/WordCategory'
 import { editorService } from './services/editorService'
+import { speechService } from './services/speechService'
 
 const Textarea = styled(JoyTextarea)`
   margin: 1rem;
@@ -196,8 +198,11 @@ function SearchBox () {
 
 function App () {
   const { speak } = useSpeechSynthesis()
-  const [speakEnabled, setSpeakEnabled] = useState(true)
   const [, copyToClipboard] = useCopyToClipboard()
+
+  const speakEnabled = useSelector(
+    globalOptionsEntity.optionSpeakEnabledSelector
+  )
 
   const { content } = useSelector(
     state => editorEntity.editorByIdSelector(state, 'c13f8f60-1c78-4743-881f-b52940f15fe7')
@@ -236,6 +241,12 @@ function App () {
   const handleDeleteTextClick = useCallback(() => {
     run(
       editorService.clearEditorContent('c13f8f60-1c78-4743-881f-b52940f15fe7')
+    )
+  }, [])
+
+  const handleSpeakToggleClick = useCallback(() => {
+    run(
+      speechService.toggleSpeakEnabledOption()
     )
   }, [])
 
@@ -281,7 +292,7 @@ function App () {
                   size="lg"
                   variant="outlined"
                   color="neutral"
-                  onClick={() => setSpeakEnabled(!speakEnabled)}
+                  onClick={handleSpeakToggleClick}
                 >
                   {speakEnabled
                     ? <VolumeUpIcon/>
