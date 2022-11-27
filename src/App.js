@@ -23,9 +23,13 @@ import TabPanel from '@mui/joy/TabPanel'
 import CloseIcon from '@mui/icons-material/Close'
 import AddIcon from '@mui/icons-material/Add'
 
+import { run } from '@regenerate/core'
+
 import * as wordEntity from './entities/word'
+import * as editorEntity from './entities/editor'
 import { useSelector } from './store'
 import { WordCategory } from './components/WordCategory'
+import { editorService } from './services/editorService'
 
 const Textarea = styled(JoyTextarea)`
   margin: 1rem;
@@ -192,9 +196,12 @@ function SearchBox () {
 
 function App () {
   const { speak } = useSpeechSynthesis()
-  const [text, setText] = useState('')
   const [speakEnabled, setSpeakEnabled] = useState(true)
   const [, copyToClipboard] = useCopyToClipboard()
+
+  const { content } = useSelector(
+    state => editorEntity.editorByIdSelector(state, 'c13f8f60-1c78-4743-881f-b52940f15fe7')
+  )
 
   const categoryIds = useSelector(
     wordEntity.wordCategoryIdListSelector
@@ -207,22 +214,38 @@ function App () {
       speak({ text: clickedWord })
     }
 
-    setText(`${text} ${clickedWord}`)
-  }, [text, speak, speakEnabled])
+    run(
+      editorService.addTextToEditor(
+        'c13f8f60-1c78-4743-881f-b52940f15fe7',
+        ` ${clickedWord}`
+      )
+    )
+  }, [speak, speakEnabled])
 
   const handleTextareaChange = useCallback(e => {
     const writtenText = e.target.value
 
-    setText(writtenText)
+    run(
+      editorService.setEditorContent(
+        'c13f8f60-1c78-4743-881f-b52940f15fe7',
+        writtenText
+      )
+    )
+  }, [])
+
+  const handleDeleteTextClick = useCallback(() => {
+    run(
+      editorService.clearEditorContent('c13f8f60-1c78-4743-881f-b52940f15fe7')
+    )
   }, [])
 
   const handleCopyClick = useCallback(e => {
-    copyToClipboard(text)
-  }, [text, copyToClipboard])
+    copyToClipboard(content)
+  }, [content, copyToClipboard])
 
   const handlePlayClick = useCallback(e => {
-    speak({ text })
-  }, [text, speak])
+    speak({ text: content })
+  }, [content, speak])
 
   return (
     <CssVarsProvider>
@@ -231,7 +254,7 @@ function App () {
         <EditorTabs/>
         <Textarea
           size="lg"
-          value={text}
+          value={content}
           onChange={handleTextareaChange}
           startDecorator={
             <Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'right', width: '100%' }}>
@@ -288,7 +311,7 @@ function App () {
                   size="lg"
                   variant="outlined"
                   color="neutral"
-                  onClick={() => setText('')}
+                  onClick={handleDeleteTextClick}
                 >
                   <DeleteIcon/>
                 </IconButton>
