@@ -12,7 +12,7 @@ export const wordCategoryIdListSelector = createSelector(
 
 const categoryIdParameter = (_, categoryId) => categoryId
 
-export const wordCategoryById = createCachedSelector(
+export const wordCategoryByIdSelector = createCachedSelector(
   categoryIdParameter,
   wordCategoriesSelector,
   (categoryId, wordCategories) => wordCategories[categoryId] || null
@@ -22,7 +22,7 @@ export const wordCategoryById = createCachedSelector(
 
 const wordsByCategoryIdSelector = ({ wordsByCategoryId }) => wordsByCategoryId || {}
 
-export const wordListByCategoryId = createCachedSelector(
+export const wordListByCategoryIdSelector = createCachedSelector(
   categoryIdParameter,
   wordsByCategoryIdSelector,
   (categoryId, wordsByCategoryId) => wordsByCategoryId[categoryId] || null

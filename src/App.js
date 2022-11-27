@@ -1,4 +1,3 @@
-import Button from '@mui/joy/Button'
 import { CssVarsProvider } from '@mui/joy/styles'
 import './App.css'
 import 'normalize.css'
@@ -15,7 +14,6 @@ import SearchIcon from '@mui/icons-material/Search'
 
 import styled from '@emotion/styled'
 import { useCopyToClipboard } from 'react-use'
-import { initialState } from './InitialState'
 
 import Box from '@mui/joy/Box'
 import Tabs from '@mui/joy/Tabs'
@@ -25,6 +23,9 @@ import TabPanel from '@mui/joy/TabPanel'
 import CloseIcon from '@mui/icons-material/Close'
 import AddIcon from '@mui/icons-material/Add'
 
+import * as wordEntity from './entities/word'
+import { useSelector } from './store'
+import { WordCategory } from './components/WordCategory'
 
 const Textarea = styled(JoyTextarea)`
   margin: 1rem;
@@ -192,9 +193,12 @@ function SearchBox () {
 function App () {
   const { speak } = useSpeechSynthesis()
   const [text, setText] = useState('')
-  const [categories] = useState(initialState.categories)
   const [speakEnabled, setSpeakEnabled] = useState(true)
   const [, copyToClipboard] = useCopyToClipboard()
+
+  const categoryIds = useSelector(
+    wordEntity.wordCategoryIdListSelector
+  )
 
   const handleWordClick = useCallback(e => {
     const clickedWord = e.target.innerText
@@ -294,25 +298,12 @@ function App () {
         />
         <SearchBox/>
         <WordOptions>
-          {categories.map(({ name, words, color }) => (
-            <div>
-              <h4>{name}</h4>
-              {words.sort().map(word => (
-                <Button
-                  sx={{
-                    background: color,
-                    margin: '0.25rem'
-                  }}
-                  size="lg"
-                  color="primary"
-                  variant="solid"
-                  key={word}
-                  onClick={handleWordClick}
-                >
-                  {word}
-                </Button>
-              ))}
-            </div>
+          {categoryIds.map(categoryId => (
+            <WordCategory
+              key={categoryId}
+              id={categoryId}
+              onWordClick={handleWordClick}
+            />
           ))}
         </WordOptions>
       </div>
