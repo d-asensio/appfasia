@@ -191,7 +191,7 @@ function SearchBox () {
 
 function App () {
   const { speak } = useSpeechSynthesis()
-  const [text, setText] = useState(initialState.text)
+  const [text, setText] = useState('')
   const [categories] = useState(initialState.categories)
   const [speakEnabled, setSpeakEnabled] = useState(true)
   const [, copyToClipboard] = useCopyToClipboard()

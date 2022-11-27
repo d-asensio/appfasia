@@ -1,5 +1,4 @@
 export const initialState = {
-  text: '',
   categories: [
     {
       name: 'Amigos',
