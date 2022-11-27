@@ -212,21 +212,6 @@ function App () {
     wordEntity.wordCategoryIdListSelector
   )
 
-  const handleWordClick = useCallback(e => {
-    const clickedWord = e.target.innerText
-
-    if (speakEnabled) {
-      speak({ text: clickedWord })
-    }
-
-    run(
-      editorService.addTextToEditor(
-        'c13f8f60-1c78-4743-881f-b52940f15fe7',
-        ` ${clickedWord}`
-      )
-    )
-  }, [speak, speakEnabled])
-
   const handleTextareaChange = useCallback(e => {
     const writtenText = e.target.value
 
@@ -336,7 +321,6 @@ function App () {
             <WordCategory
               key={categoryId}
               id={categoryId}
-              onWordClick={handleWordClick}
             />
           ))}
         </WordOptions>
