@@ -10,7 +10,14 @@ export const wordCategoryIdListSelector = createSelector(
   wordCategories => keys(wordCategories)
 )
 
+const categoryIdParameter = (_, categoryId) => categoryId
 
-export const wordCategoryById = () => ({ id: '', name: '', color: '#fff' })
+export const wordCategoryById = createCachedSelector(
+  categoryIdParameter,
+  wordCategoriesSelector,
+  (categoryId, wordCategories) => wordCategories[categoryId] || null
+)(
+  categoryIdParameter
+)
 
 export const wordListByCategoryId = () => []
