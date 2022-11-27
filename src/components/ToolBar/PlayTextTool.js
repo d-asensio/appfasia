@@ -1,6 +1,6 @@
 import { useSpeechSynthesis } from 'react-speech-kit'
-import { useSelector } from '../store'
-import * as editorEntity from '../entities/editor'
+import { useSelector } from '../../store'
+import * as editorEntity from '../../entities/editor'
 import { useCallback } from 'react'
 import { IconButton, Tooltip } from '@mui/joy'
 import PlayCircleIcon from '@mui/icons-material/PlayCircle'

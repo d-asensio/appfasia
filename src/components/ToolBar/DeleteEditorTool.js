@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { run } from '@regenerate/core'
-import { editorService } from '../services/editorService'
+import { editorService } from '../../services/editorService'
 import { IconButton, Tooltip } from '@mui/joy'
 import DeleteIcon from '@mui/icons-material/Delete'
 

@@ -1,6 +1,6 @@
 import { useCopyToClipboard } from 'react-use'
-import { useSelector } from '../store'
-import * as editorEntity from '../entities/editor'
+import { useSelector } from '../../store'
+import * as editorEntity from '../../entities/editor'
 import { useCallback } from 'react'
 import { IconButton, Tooltip } from '@mui/joy'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
