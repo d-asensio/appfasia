@@ -1,4 +1,4 @@
-import { wordCategoryById, wordCategoryIdListSelector } from './selectors'
+import { wordCategoryById, wordCategoryIdListSelector, wordListByCategoryId } from './selectors'
 
 describe('wordCategoryIdListSelector', () => {
   it('should return a list of category ids', () => {
@@ -48,6 +48,33 @@ describe('wordCategoryById', () => {
     const state = {}
 
     const result = wordCategoryById(state, 'aUnknownCategory')
+
+    expect(result).toEqual(null)
+  })
+})
+
+describe('wordListByCategoryId', () => {
+  it('should return the words of a category given its id', () => {
+    const categoryWords = [
+      'a word',
+      'another word'
+    ]
+
+    const state = {
+      wordsByCategoryId: {
+        aCategory: categoryWords
+      }
+    }
+
+    const result = wordListByCategoryId(state, 'aCategory')
+
+    expect(result).toStrictEqual(categoryWords)
+  })
+
+  it('should return null when the provided id does not belong to any category', () => {
+    const state = {}
+
+    const result = wordListByCategoryId(state, 'aUnknownCategory')
 
     expect(result).toEqual(null)
   })

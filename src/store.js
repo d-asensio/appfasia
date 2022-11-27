@@ -21,7 +21,7 @@ export const store = createStore(
         color: '#287271'
       }
     },
-    wordsByCategory: {
+    wordsByCategoryId: {
       friends: [
         'Sílvia',
         'Mario',

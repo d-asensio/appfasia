@@ -20,4 +20,12 @@ export const wordCategoryById = createCachedSelector(
   categoryIdParameter
 )
 
-export const wordListByCategoryId = () => []
+const wordsByCategoryIdSelector = ({ wordsByCategoryId }) => wordsByCategoryId || {}
+
+export const wordListByCategoryId = createCachedSelector(
+  categoryIdParameter,
+  wordsByCategoryIdSelector,
+  (categoryId, wordsByCategoryId) => wordsByCategoryId[categoryId] || null
+)(
+  categoryIdParameter
+)
