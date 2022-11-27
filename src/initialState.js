@@ -1,4 +1,7 @@
 export const initialState = {
+  globalOptions: {
+    speakEnabled: true
+  },
   editorsById: {
     'c13f8f60-1c78-4743-881f-b52940f15fe7': {
       name: 'Tab 1',
