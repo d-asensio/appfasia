@@ -1,9 +1,9 @@
 import produce from 'immer'
 import { editorByIdSelector } from './selectors'
 
-export const setEditorTextMutation = produce((state, {id, text}) => {
+export const setEditorContentMutation = produce((state, {id, content}) => {
   const editor = editorByIdSelector(state, id)
-  editor.content = text
+  editor.content = content
 })
 
 export const addTextToEditorMutation = produce((state, {id, text}) => {

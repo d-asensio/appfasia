@@ -1,7 +1,22 @@
-import { addTextToEditorMutation } from '../entities/editor'
+import { addTextToEditorMutation, setEditorContentMutation } from '../entities/editor'
 import store from '../effects/store'
 
 import { editorService } from './editorService'
+
+describe('setEditorContent', () => {
+  it('should use store.mutate with the setEditorContentMutation', () => {
+    expect(
+      editorService.setEditorContent('an-editor-id', 'editor content')
+    ).toGenerateEffects([
+      {
+        effect: store.mutate(setEditorContentMutation, {
+          id: 'an-editor-id',
+          content: 'editor content'
+        })
+      }
+    ])
+  })
+})
 
 describe('addTextToEditor', () => {
   it('should use store.mutate with the addTextToEditorMutation', () => {
