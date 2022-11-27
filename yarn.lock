@@ -2567,6 +2567,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@regenerate/core@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@regenerate/core@npm:1.0.2"
+  checksum: 0cce587f6d9a4c866c9f521fde1aa6b830dd75fa7d73763b6c7d6caa2f67b94381ae9d8bc2592dab7c4ec1e5fdf75e30586773d7aeb877a0e1cdc38d90646c47
+  languageName: node
+  linkType: hard
+
+"@regenerate/effect-env@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@regenerate/effect-env@npm:1.0.2"
+  peerDependencies:
+    "@regenerate/core": 1.0.2
+  checksum: 839c1d4915f170359167fa7ddaaf9be048d22c5c7e7981131f3026ebd226b95ba6c56448dbb440eb8c0988901e6498e68a91d67494d07e882eca9f44f13e9792
+  languageName: node
+  linkType: hard
+
+"@regenerate/effect-zustand-store@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@regenerate/effect-zustand-store@npm:1.0.2"
+  peerDependencies:
+    "@regenerate/core": 1.0.2
+    zustand: ^3.6.9
+  checksum: a3d41acb8cc940b209a279c9c067416a6efea847af2bc0491387ffe93bae0a914fc14d9bf10c8fd2fa006a046b087af8aee547772c6df431e6290b43c16b013f
+  languageName: node
+  linkType: hard
+
 "@rollup/plugin-babel@npm:^5.2.0":
   version: 5.3.1
   resolution: "@rollup/plugin-babel@npm:5.3.1"
@@ -3891,16 +3917,23 @@ __metadata:
     "@mui/icons-material": ^5.10.15
     "@mui/joy": ^5.0.0-alpha.55
     "@mui/material": ^5.10.15
+    "@regenerate/core": 1.0.2
+    "@regenerate/effect-env": 1.0.2
+    "@regenerate/effect-zustand-store": 1.0.2
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^13.2.1
+    immer: ^9.0.12
     normalize.css: ^8.0.1
+    re-reselect: ^4.0.0
     react: ^18.2.0
     react-dom: ^18.2.0
     react-scripts: 5.0.1
     react-speech-kit: ^3.0.1
     react-use: ^17.4.0
+    reselect: ^4.1.5
     web-vitals: ^2.1.0
+    zustand: ^3.6.9
   languageName: unknown
   linkType: soft
 
@@ -7365,7 +7398,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:^9.0.7":
+"immer@npm:^9.0.12, immer@npm:^9.0.7":
   version: 9.0.16
   resolution: "immer@npm:9.0.16"
   checksum: e9a5ca65c929b329da7a3b7beccf7984271cda7bdd47b2cab619eac3277dcd56598c211b55cc340786b6eff0c06652ac018808d9fd744443f06882364dece6bc
@@ -10917,6 +10950,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"re-reselect@npm:^4.0.0":
+  version: 4.0.1
+  resolution: "re-reselect@npm:4.0.1"
+  peerDependencies:
+    reselect: ">1.0.0"
+  checksum: 6acb302c5a3d7aa44d32b329babaeed73a5d78eb832e2020d4f5f9515d38d3bebae5d0cfe853e5ceb2682abd8cdfe41b51ab76a997c18fcc8f1cfa4ab81ff58e
+  languageName: node
+  linkType: hard
+
 "react-app-polyfill@npm:^3.0.0":
   version: 3.0.0
   resolution: "react-app-polyfill@npm:3.0.0"
@@ -11336,6 +11378,13 @@ __metadata:
   version: 1.0.0
   resolution: "requires-port@npm:1.0.0"
   checksum: eee0e303adffb69be55d1a214e415cf42b7441ae858c76dfc5353148644f6fd6e698926fc4643f510d5c126d12a705e7c8ed7e38061113bdf37547ab356797ff
+  languageName: node
+  linkType: hard
+
+"reselect@npm:^4.1.5":
+  version: 4.1.7
+  resolution: "reselect@npm:4.1.7"
+  checksum: 738d8e2b8f0dca154ad29de6a209c9fbca2d70ae6788fd85df87f2c74b95a65bbf2d16d43a9e2faff39de34d17a29d706ba08a6b2ee5660c09589edbd19af7e1
   languageName: node
   linkType: hard
 
@@ -13614,5 +13663,17 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^3.6.9":
+  version: 3.7.2
+  resolution: "zustand@npm:3.7.2"
+  peerDependencies:
+    react: ">=16.8"
+  peerDependenciesMeta:
+    react:
+      optional: true
+  checksum: 18f025b1b666a311121d3855303ff58e6a21fd107920ca474307e86984c13338d6c4cfa5cdf13382a9e0f76821f2554a12d4d200a98a66b58637e729f149797b
   languageName: node
   linkType: hard
