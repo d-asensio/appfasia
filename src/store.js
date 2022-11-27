@@ -3,50 +3,46 @@ import createStore from 'zustand/vanilla'
 
 export const store = createStore(
   () => ({
-    wordCategories: [
-      {
-        id: 'friends',
+    wordCategories: {
+      friends: {
         name: 'Amigos',
         color: '#0083f5'
       },
-      {
-        id: 'verbs',
+      verbs: {
         name: 'Verbos',
         color: '#e76f51'
       },
-      {
-        id: 'pronouns',
+      pronouns: {
         name: 'Pronombres',
         color: '#8f4baa'
       },
-      {
-        id: 'adverbs',
+      adverbs: {
         name: 'Adverbios',
         color: '#287271'
       }
-    ],
+    },
     wordsByCategory: {
       friends: [
-        "Sílvia",
-        "Mario",
-        "Isa",
-        "Mike",
-        "Ricardo",
-        "Jorge Abascal",
-        "José",
-        "Inma",
-        "Julio",
-        "Laura",
-        "Ara",
-        "Carolina",
-        "Andrea",
-        "Alexandra",
-        "Álex",
-        "El impecable",
-        "Belén",
-        "David",
-        "Fran",
-        "Marius"
+        'Sílvia',
+        'Mario',
+        'Isa',
+        'Mike',
+        'Ricardo',
+        'Jorge Abascal',
+        'José',
+        'Inma',
+        'Julio',
+        'Laura',
+        'Ara',
+        'Carolina',
+        'Andrea',
+        'Alexandra',
+        'Álex',
+        'El impecable',
+        'Belén',
+        'David',
+        'Fran',
+        'Marius'
       ],
       verbs: [
         'abrir',

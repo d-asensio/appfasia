@@ -1,7 +1,15 @@
 import { createSelector } from 'reselect'
 import { createCachedSelector } from 're-reselect'
 
-export const wordCategoryIdListSelector = () => []
+import { keys } from 'ramda'
+
+const wordCategoriesSelector = ({ wordCategories }) => wordCategories || {}
+
+export const wordCategoryIdListSelector = createSelector(
+  wordCategoriesSelector,
+  wordCategories => keys(wordCategories)
+)
+
 
 export const wordCategoryById = () => ({ id: '', name: '', color: '#fff' })
 
