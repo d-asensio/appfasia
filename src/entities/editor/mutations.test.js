@@ -1,4 +1,26 @@
-import { addTextToEditorMutation } from './mutations'
+import { addTextToEditorMutation, setEditorTextMutation } from './mutations'
+
+describe('setEditorTextMutation', () => {
+  it('should replace the given editor content by the provided text', () => {
+    const state = {
+      editorsById: {
+        'an-editor-id': {
+          content: 'old text'
+        }
+      }
+    }
+
+    const result = setEditorTextMutation(state, { id: 'an-editor-id', text: 'new text' })
+
+    expect(result).toStrictEqual({
+      editorsById: {
+        'an-editor-id': {
+          content: 'new text'
+        }
+      }
+    })
+  })
+})
 
 describe('addTextToEditorMutation', () => {
   it('should append a text to the given editor starting from empty content', () => {
