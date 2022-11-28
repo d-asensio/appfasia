@@ -7,6 +7,10 @@ export const initialState = {
     'c13f8f60-1c78-4743-881f-b52940f15fe7': {
       name: 'Tab 1',
       content: ''
+    },
+    '683aaf37-4073-4d96-8f32-e8f6fb98ff83': {
+      name: 'Tab 2',
+      content: ''
     }
   },
   wordCategories: {
