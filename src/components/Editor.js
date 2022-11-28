@@ -13,13 +13,9 @@ const Textarea = styled(JoyTextarea)`
   min-height: 300px;
 `
 
-export function Editor () {
-  const currentEditorId = useSelector(
-    editorEntity.currentEditorSelector
-  )
-
+export function Editor ({ id }) {
   const { content } = useSelector(
-    state => editorEntity.editorByIdSelector(state, currentEditorId)
+    state => editorEntity.editorByIdSelector(state, id)
   )
 
   const handleTextareaChange = useCallback(e => {
@@ -27,11 +23,11 @@ export function Editor () {
 
     run(
       editorService.setEditorContent(
-        currentEditorId,
+        id,
         writtenText
       )
     )
-  }, [currentEditorId])
+  }, [id])
 
   return (
     <Textarea
@@ -39,7 +35,7 @@ export function Editor () {
       value={content}
       onChange={handleTextareaChange}
       startDecorator={
-        <ToolBar editorId={currentEditorId}/>
+        <ToolBar editorId={id}/>
       }
     />
   )
