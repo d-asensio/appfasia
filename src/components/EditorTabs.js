@@ -69,8 +69,7 @@ function EditorTab ({ id }) {
           ...(isCurrentEditor
             ? {
               color: 'primary.plainColor',
-              fontWeight: 'lg',
-              p: 0
+              fontWeight: 'lg'
             }
             : {})
         }}
