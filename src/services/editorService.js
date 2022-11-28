@@ -1,5 +1,5 @@
 import store from '../effects/store'
-import { addTextToEditorMutation, setEditorContentMutation } from '../entities/editor'
+import { addTextToEditorMutation, setCurrentEditorMutation, setEditorContentMutation } from '../entities/editor'
 
 export const editorService = (function IIFE () {
   function * setEditorContent (id, content) {
@@ -14,9 +14,14 @@ export const editorService = (function IIFE () {
     yield store.mutate(setEditorContentMutation, { id, content: '' })
   }
 
+  function * setCurrentEditor (id) {
+    yield store.mutate(setCurrentEditorMutation, { id })
+  }
+
   return {
     setEditorContent,
     addTextToEditor,
-    clearEditorContent
+    clearEditorContent,
+    setCurrentEditor
   }
 })()

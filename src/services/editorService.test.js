@@ -1,4 +1,4 @@
-import { addTextToEditorMutation, setEditorContentMutation } from '../entities/editor'
+import { addTextToEditorMutation, setCurrentEditorMutation, setEditorContentMutation } from '../entities/editor'
 import store from '../effects/store'
 
 import { editorService } from './editorService'
@@ -27,6 +27,20 @@ describe('addTextToEditor', () => {
         effect: store.mutate(addTextToEditorMutation, {
           id: 'an-editor-id',
           text: 'text to be added'
+        })
+      }
+    ])
+  })
+})
+
+describe('setCurrentEditor', () => {
+  it('should use store.mutate with the setCurrentEditorMutation', () => {
+    expect(
+      editorService.setCurrentEditor('an-editor-id')
+    ).toGenerateEffects([
+      {
+        effect: store.mutate(setCurrentEditorMutation, {
+          id: 'an-editor-id',
         })
       }
     ])

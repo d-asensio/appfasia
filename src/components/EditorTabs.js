@@ -10,6 +10,8 @@ import AddIcon from '@mui/icons-material/Add'
 import { Editor } from './Editor'
 import { useSelector } from '../store'
 import * as editorEntity from '../entities/editor'
+import { run } from '@regenerate/core'
+import { editorService } from '../services/editorService'
 
 function EditorTab ({ id }) {
   const { name } = useSelector(
@@ -149,13 +151,15 @@ export function EditorTabs () {
     editorEntity.currentEditorSelector
   )
 
-  const handleTabChange = useCallback(
-    (event, value) => console.log({ event, value }),
-    []
-  )
+  const handleTabChange = useCallback((_, id) => {
+    run(
+      editorService.setCurrentEditor(id)
+    )
+  }, [])
 
   return (
     <Tabs
+      value={currentEditorId}
       onChange={handleTabChange}
       sx={{ '--Tabs-gap': '0px' }}
     >

@@ -1,4 +1,4 @@
-import { addTextToEditorMutation, setEditorContentMutation } from './mutations'
+import { addTextToEditorMutation, setCurrentEditorMutation, setEditorContentMutation } from './mutations'
 
 describe('setEditorTextMutation', () => {
   it('should replace the given editor content by the provided text', () => {
@@ -60,6 +60,20 @@ describe('addTextToEditorMutation', () => {
           content: 'some content already here, and more to come'
         }
       }
+    })
+  })
+})
+
+describe('setCurrentEditor', () => {
+  it('should replace the current editor by the provided one', () => {
+    const state = {
+      currentEditor: 'an-editor-id'
+    }
+
+    const result = setCurrentEditorMutation(state, { id: 'a-new-editor-id' })
+
+    expect(result).toStrictEqual({
+      currentEditor: 'a-new-editor-id'
     })
   })
 })

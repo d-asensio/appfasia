@@ -10,3 +10,7 @@ export const addTextToEditorMutation = produce((state, {id, text}) => {
   const editor = editorByIdSelector(state, id)
   editor.content += text
 })
+
+export const setCurrentEditorMutation = produce((state, {id}) => {
+  state.currentEditor = id
+})
