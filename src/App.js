@@ -13,7 +13,7 @@ function App () {
       <CssBaseline/>
       <div className="App">
         <EditorTabs/>
-        <Editor id='c13f8f60-1c78-4743-881f-b52940f15fe7'/>
+        <Editor />
         <SearchBox/>
         <WordList />
       </div>
