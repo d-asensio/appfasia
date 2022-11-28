@@ -11,6 +11,7 @@ import * as globalOptionsEntity from '../entities/globalOptions'
 import { editorService } from '../services/editorService'
 
 import { useSelector } from '../store'
+import * as editorEntity from '../entities/editor'
 
 const sortAlphabetically = sort(
   (a, b) => a.localeCompare(b)
@@ -18,6 +19,10 @@ const sortAlphabetically = sort(
 
 export function WordCategory ({ id }) {
   const { speak } = useSpeechSynthesis()
+
+  const currentEditorId = useSelector(
+    editorEntity.currentEditorSelector
+  )
 
   const { name, color } = useSelector(
     state => wordEntity.wordCategoryByIdSelector(state, id)
@@ -40,11 +45,11 @@ export function WordCategory ({ id }) {
 
     run(
       editorService.addTextToEditor(
-        'c13f8f60-1c78-4743-881f-b52940f15fe7',
+        currentEditorId,
         ` ${clickedWord}`
       )
     )
-  }, [speak, speakEnabled])
+  }, [speak, speakEnabled, currentEditorId])
 
   return (
     <div>
