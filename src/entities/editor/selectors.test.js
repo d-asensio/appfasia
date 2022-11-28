@@ -1,4 +1,25 @@
-import { editorByIdSelector, editorIdListSelector } from './selectors'
+import { currentEditorSelector, editorByIdSelector, editorIdListSelector } from './selectors'
+
+describe('currentEditorSelector', () => {
+  it('should return the id of the current editor', () => {
+    const state = {
+      currentEditor: 'an-editor-id'
+    }
+
+    const result = currentEditorSelector(state)
+
+    expect(result).toEqual('an-editor-id')
+  })
+
+  it('should return null if the state is empty', () => {
+    const state = {}
+
+    const result = currentEditorSelector(state)
+
+    expect(result).toEqual(null)
+  })
+})
+
 
 describe('editorIdListSelector', () => {
   it('should return a list of editor ids', () => {
