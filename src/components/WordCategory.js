@@ -2,16 +2,12 @@ import { useCallback } from 'react'
 import { sort } from 'ramda'
 import { useSpeechSynthesis } from 'react-speech-kit'
 
-import { run } from '@regenerate/core'
-
 import Button from '@mui/joy/Button'
 
 import * as wordEntity from '../entities/word'
 import * as globalOptionsEntity from '../entities/globalOptions'
-import { editorService } from '../services/editorService'
 
 import { useSelector } from '../store'
-import * as editorEntity from '../entities/editor'
 
 const sortAlphabetically = sort(
   (a, b) => a.localeCompare(b)
@@ -19,10 +15,6 @@ const sortAlphabetically = sort(
 
 export function WordCategory ({ id }) {
   const { speak } = useSpeechSynthesis()
-
-  const currentEditorId = useSelector(
-    editorEntity.currentEditorSelector
-  )
 
   const { name, color } = useSelector(
     state => wordEntity.wordCategoryByIdSelector(state, id)
@@ -42,14 +34,7 @@ export function WordCategory ({ id }) {
     if (speakEnabled) {
       speak({ text: clickedWord })
     }
-
-    run(
-      editorService.addTextToEditor(
-        currentEditorId,
-        ` ${clickedWord}`
-      )
-    )
-  }, [speak, speakEnabled, currentEditorId])
+  }, [speak, speakEnabled])
 
   return (
     <div>
